@@ -3,8 +3,14 @@
 \setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
 
-\definecolor{MyBackground}{rgb}{0.9 0.9 0.9}
+\usepackage{xcolor}
+
+\definecolor{MyBackground}{rgb}{1 1 1}
+\definecolor{CUDRed}{rgb}{.8 0 0}
 \setbeamercolor{background canvas}{bg=MyBackground}
+\setbeamercolor{frametitle}{fg=white,bg=CUDRed}
+
+\logo{\vspace{-6em}\includegraphics[width=13em]{images/cud}\hspace{70em}}
 
 \beamertemplatenavigationsymbols$if(navigation)$$navigation$$else$empty$endif$
 $if(fontfamily)$
@@ -109,7 +115,7 @@ $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
 
-% Set fontsize for code blocks 
+% Set fontsize for code blocks
 \usepackage{fancyvrb}
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},fontsize=\footnotesize}
 
@@ -121,7 +127,7 @@ $endif$
   \renewenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 }{}
 
-% For animated 
+% For animated
 \usepackage{movie15}
 
 \newcommand{\columnsbegin}{\begin{columns}}

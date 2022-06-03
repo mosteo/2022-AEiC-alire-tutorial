@@ -8,7 +8,8 @@ HIGHLIGHT_STYLE=pygments
 PANDOC_OPTS := -t beamer --template=$(TEMPLATE)\
 	--slide-level 2 -V monofont="DejaVu Sans Mono" \
 	-V monofontoptions=Scale=0.9 \
-	--highlight-style=$(HIGHLIGHT_STYLE)
+	--highlight-style=$(HIGHLIGHT_STYLE) \
+	-M date="`date "+%B %e, %Y"`"
 
 all : $(SLIDES) $(HANDOUTS)
 
@@ -19,7 +20,7 @@ all : $(SLIDES) $(HANDOUTS)
 	dot -Tps2 $< -o $@.ps
 	ps2pdf $@.ps $@
 	rm $@.ps
-clean: 
+clean:
 	rm -f $(SLIDES) $(DIAGRAMS)
 
 diagrams: $(DIAGRAMS)
