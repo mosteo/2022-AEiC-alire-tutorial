@@ -6,10 +6,9 @@ HIGHLIGHT_STYLE=pygments
 # Highlight styles: pygments kate monochrome espresso haddock tango zenburn
 
 PANDOC_OPTS := -t beamer --template=$(TEMPLATE)\
-	--slide-level 2 -V monofont="DejaVu Sans Mono" \
-	-V monofontoptions=Scale=0.9 \
+	--slide-level 2 \
 	--highlight-style=$(HIGHLIGHT_STYLE) \
-	-M date="`date "+%B %e, %Y"`"
+	--pdf-engine xelatex
 
 all : $(SLIDES) $(HANDOUTS)
 

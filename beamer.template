@@ -4,6 +4,10 @@
 \setbeamercolor{caption name}{fg=normal text.fg}
 
 \usepackage{xcolor}
+\usepackage{pifont}
+
+\newcommand{\task}{\textbf{\large\ding{45}}~}
+%\DeclareUnicodeCharacter{270D}{XXX}
 
 \definecolor{MyBackground}{rgb}{1 1 1}
 \definecolor{CUDRed}{rgb}{.8 0 0}
