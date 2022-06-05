@@ -189,7 +189,7 @@ Details about dependencies:
 - `alr show hello --tree`
 - `alr show hello --graph`
 
-Try these with a crate with more dependencies: `lace_gel_full_demo, septum, shoot_n_loot`
+\task Try these with a crate with more dependencies: `lace_gel_full_demo, septum, shoot_n_loot`
 
 ## Showing details after retrieving
 
@@ -271,12 +271,12 @@ demo
 
 # Working with dependencies
 
-## The goal
+## \task The goal
 
 - Create a new binary crate (or reuse demo)
 - Add the 'libhello' dependency
 - Call its `Libhello.Hello_World` procedure from your main subprogram
-- Run it to
+- Run it
 
 ## Adding a dependency via `alr`
 
@@ -284,9 +284,15 @@ demo
 
 `$ alr with libhello`
 
-\task Verify new code is being built:
+&nbsp;
 
-`$ alr build`
+\task Verify new code is being built:
+```
+$ alr build
+Compile
+   [Ada]          demo.adb
+   [Ada]          libhello.adb
+```
 
 ## Changes caused by adding a dependency
 
@@ -375,7 +381,7 @@ https://github.com/alire-project/alire/blob/master/doc/catalog-format-spec.md
 
 ## Building with default profiles
 
-- Dependencies always use release mode
+- Dependencies by default use release mode
 - For the root crate:
   - `alr build [--release|--validation|--development]`
   - Defaults to development
