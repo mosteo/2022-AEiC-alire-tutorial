@@ -591,6 +591,39 @@ mylib
     └── mylib.ads
 ```
 
+
+[Section]::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+# File generation
+
+## Pre-build file generation
+
+- In some restricted embedded environments, it is not feasible to use some ada dynamic constructs. This may difficult efficiently tailoring the code for a particular board.
+
+- Alire allows to define variables that are generated into spec files before the build, and so can be used statically.
+
+## Variable types
+
+[https://github.com/alire-project/alire/blob/master/doc/catalog-format-spec.md#using-crate-configuration](https://github.com/alire-project/alire/blob/master/doc/catalog-format-spec.md#using-crate-configuration)
+
+```bash
+[configuration.variables]
+Enable_Logs = {type = "Boolean", default = false}
+Buffer_Size = {type = "Integer",
+               first = 128, last = 1024, default = 256}
+```
+
+## Setting values
+
+```bash
+[configuration.values]
+crate_name.Enable_Logs = true
+```
+
+\task Try adding a configuration variable to your crate. Inspect the generated file in `config/demo_config.ads`
+
+
+
 [Section]::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 # Indexes
