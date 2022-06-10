@@ -148,7 +148,7 @@ $ alr run
 
 \task Other executable crates to experiment with:
 
-`ansiada, eagle_lander, lace_gel_full_demo, mathpaqs, play_2048, rsfile, septum, shoot_n_loot, zipada`
+`eagle_lander, lace_gel_full_demo, mathpaqs, play_2048, rsfile, septum, shoot_n_loot, zipada`
 
 ## Look up by name
 
@@ -185,9 +185,7 @@ Check out most popular tags at [https://alire.ada.dev/tags/](https://alire.ada.d
 
 Details about dependencies:
 
-- `alr show hello --solve`
-- `alr show hello --tree`
-- `alr show hello --graph`
+- `alr show hello --solve | --tree | --graph`
 
 \task Try these with a crate with more dependencies: `lace_gel_full_demo, septum, shoot_n_loot`
 
@@ -195,7 +193,9 @@ Details about dependencies:
 
 From within a local crate folder, you can simply issue:
 
-`$ alr show`
+- `alr show`
+- `alr show --solve | --tree | --graph`
+- `alr with --solve | --tree | --graph | --versions`
 
 Useful to display your work-in-progress manifest
 
@@ -409,7 +409,7 @@ Alire has collections of switches grouped by topic. E.g.:
   - Performance
   - Size
   - Debug
-\normalsize
+  \normalsize
 
 Then, *for the own crate*, you can:
 
@@ -544,10 +544,10 @@ List pins with `$ alr pin`
 
 &nbsp;
 
-\task Pins in `alr v1.2`:
+\task Pins in `alr v1.1`:
 
 \small
-1. `git clone https://github.com/alire-project/alire --branch release/1.2`
+1. `git clone https://github.com/alire-project/alire --branch release/1.1`
 1. `cd alire`
 1. `alr pin`
 
@@ -560,7 +560,7 @@ List pins with `$ alr pin`
 
 `alr with` will add dependency + pin
 
-`alr pin` only works when the dependency already exists
+`alr pin` only works when the dependency already exists in the manifest
 
 ## Pins for testing/demo subcrates
 
@@ -590,6 +590,79 @@ mylib
 └── src
     └── mylib.ads
 ```
+
+
+[Section]::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+# WORDLE example
+
+## Implementing WORDLE in an afternoon
+
+Wordle is a popular game of guessing a word of 5 letters in six attempts or less.
+
+1. `$ git clone https://github.com/mosteo/wordle_ada --branch demo`
+1. `$ cd wordle_ada`
+1. `$ alr run`
+
+## Example run
+
+![](alire-exercises.assets/image-20220609231147153.png)
+
+## Project structure
+
+\linespread{0.8}
+```
+$ alr with --tree
+
+wordle=0.1.0
+├── aaa=0.2.6 (~0.2.6)
+├── ansiada=1.0.0 (^1.0.0)
+├── wordlelib=0.1.0 (~0.1.0)
+│   └── aaa=0.2.6 (~0.2.5)
+└── wordlist=0.1.2 (~0.1.2)
+    ├── aaa=0.2.6 (~0.2.5)
+    ├── ada_toml=0.3.0 (~0.3.0)
+    ├── gnat=11.2.4 (gnat_native) (>=10 & <2000)
+    └── resources=0.1.0 (~0.1.0)
+```
+
+## Used crates
+
+\columnsbegin
+
+\column{.5\textwidth}
+
+- wordle
+  - user interaction
+- aaa
+  - string casing
+  - word containers
+- ansiada
+  - terminal colors
+
+\column{.5\textwidth}
+
+- wordlelib
+  - game logic
+- wordlist
+  - list of English words
+- ada_toml
+  - wordlist loading
+- resources
+  - locating wordlist.toml
+
+\columnsend
+
+## Fix the WORDLE project yourself
+
+- \task Follow the STEPs in the source code to complete the WORDLE project
+- \task Each STEP indicates where to locate the next one to continue
+- \task Start with
+  - `git clone https://github.com/mosteo/wordle_ada --branch tutorial`
+  - `cd wordle_ada`
+  - Your first STEP is at the top of `alire.toml`
+    - Each step usually includes several TODOs
+
 
 
 [Section]::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -643,6 +716,51 @@ crate_name.Enable_Logs = true
 
 
 
+[Section]::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+# Resources
+
+## Exporting resources
+
+Resources are files to be used at run-time: graphics, texts, databases, etc.
+
+Place your resources at `./share/my_crate/`
+
+\linespread{0.8}
+```bash
+$ tree demo
+demo
+├── alire.toml    # Manifest
+├── demo.gpr      # Project file
+├── share
+│   └── demo      # Place exported resources here
+└── src
+    └── demo.adb  # Main subprogram
+```
+
+## Using resources [from other crates]
+
+Crate within the community index:
+
+- `$ alr show resources`
+- `$ alr with resources`
+
+\task Inspect `resources.ads`
+
+Provides a path to a crate's resources:
+
+- During development, inside the crate folder
+- After `gprinstall`, relative to the binary
+
+\linespread{0.8}
+```bash
+$ tree prefix
+prefix
+├── bin
+└── share
+    ├── demo
+    └── another_crate
+```
 
 [Section]::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -682,4 +800,4 @@ Guess a word in six attempts
 - Useful crates: ansiada, wordlist, wordlelib
 - Crate 'wordlist' is not in the community index!
   - https:/github.com/mosteo/aeic22_index
--->
+  -->
