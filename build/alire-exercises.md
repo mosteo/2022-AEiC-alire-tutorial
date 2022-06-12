@@ -33,6 +33,10 @@ Visit the following repository to get the materials:
 
 - [https://github.com/mosteo/2022-AEiC-alire-tutorial](https://github.com/mosteo/2022-AEiC-alire-tutorial)
 
+Also, if you don't have GNAT Studio:
+
+- [https://github.com/AdaCore/gnatstudio/releases/tag/gnatstudio-cr-20220512](https://github.com/AdaCore/gnatstudio/releases/tag/gnatstudio-cr-20220512)
+
 # Installation
 
 ## Installation
@@ -126,6 +130,18 @@ gnat_external 9.4.0    Available Detected at /usr/bin/gnat
 \normalsize
 - Available compilers take precedence over uninstalled ones
   - May avoid a large download
+
+## Bash completion
+
+Requires `alr` to be in $PATH
+
+Adjust for your sources location:
+
+```bash
+if [ -f /path/to/alire/scripts/alr-completion.bash ]; then
+    source /path/to/alire/scripts/alr-completion.bash
+fi
+```
 
 
 
